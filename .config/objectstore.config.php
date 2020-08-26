@@ -12,9 +12,9 @@ if (getenv('OBJECTSTORE_S3_BUCKET')) {
         'region' => getenv('OBJECTSTORE_S3_REGION') ?: '',
         'hostname' => getenv('OBJECTSTORE_S3_HOST') ?: '',
         'port' => getenv('OBJECTSTORE_S3_PORT') ?: '',
-        'use_ssl' => $use_ssl != null && (strtolower($use_ssl) == 'false' || $use_ssl == false) ? false : true,
+        'use_ssl' => (strtolower($use_ssl) === 'false' || $use_ssl == false) ? false : true,
         // required for some non Amazon S3 implementations
-        'use_path_style' => $use_path == true && strtolower($use_path) != 'false'
+        'use_path_style' => $use_path == true && strtolower($use_path) !== 'false'
       )
     )
   );
